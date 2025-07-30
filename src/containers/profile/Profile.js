@@ -39,11 +39,12 @@ export default function Profile() {
   if (
     openSource.display &&
     openSource.showGithubProfile === "true" &&
+    prof &&
     !(typeof prof === "string" || prof instanceof String)
   ) {
     return (
       <Suspense fallback={renderLoader()}>
-        <GithubProfileCard prof={prof} key={prof.id} />
+        <GithubProfileCard prof={prof} key={prof?.id || "github-profile"} />
       </Suspense>
     );
   } else {
